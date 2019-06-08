@@ -1,6 +1,7 @@
 import tkinter as tk
 import tkinter.messagebox
 import pymysql
+import tkwindows
 
 
 def noticeSelect():
@@ -11,7 +12,18 @@ def noticeSelect():
     mycursor.execute(select)
     select = mycursor.fetchall()
     mydb.commit()
-    tk.messagebox.showinfo(title='罚单', message=select)
+    tkwindows.select_windows(select)
+    return select
+
+
+def notice_select_id(id):
+    mydb = pymysql.connect(host="localhost", user="root",
+                           password="8928000cjc", db="sql", port=3306)
+    mycursor = mydb.cursor()
+    mycursor.execute('select * from notice where `sql`.notice.notice_id = %s', id)
+    var = mycursor.fetchone()
+    return var
+
 
 
 def noticeAdd(time, date, place, record):
@@ -30,11 +42,11 @@ def noticeUpdate(colunm, var, id):
     if colunm == 'notice_time':
         update = 'update notice set notice_time = %s where `sql`.notice.notice_id = %s'
     elif colunm == 'notice_date':
-        update = 'update notice set notice_date = %s where `sql`.notice.notice_date = %s'
+        update = 'update notice set notice_date = %s where `sql`.notice.notice_id = %s'
     elif colunm == 'notice_place':
-        update = 'update notice set notice_place = %s where `sql`.notice.notice_place = %s'
+        update = 'update notice set notice_place = %s where `sql`.notice.notice_id = %s'
     elif colunm == 'notice_record':
-        update = 'update notice set notice_recorde = %s where `sql`.notice.notice_record = %s'
+        update = 'update notice set notice_recorde = %s where `sql`.notice.notice_id = %s'
     else:
         return 'error'
     mycursor.execute(update, (var, id))

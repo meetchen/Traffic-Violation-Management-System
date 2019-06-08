@@ -1,7 +1,7 @@
 import tkinter as tk
 import pymysql
 import tkinter.messagebox
-
+import tkwindows
 
 def vehicleSelect():
     mydb = pymysql.connect(host="localhost", user="root",
@@ -11,7 +11,17 @@ def vehicleSelect():
     mycursor.execute(select)
     select = mycursor.fetchall()
     mydb.commit()
-    tk.messagebox.showinfo(title='机动车表', message=select)
+    tkwindows.select_windows(select)
+    return select
+
+
+def vehicle_select_id(id):
+    mydb = pymysql.connect(host="localhost", user="root",
+                           password="8928000cjc", db="sql", port=3306)
+    mycursor = mydb.cursor()
+    mycursor.execute('select * from vehicle where `sql`.vehicle.vehicle_license_plate = %s', id)
+    var = mycursor.fetchone()
+    return var
 
 
 def vehicleUpdate(colunm, var, id):
@@ -31,12 +41,13 @@ def vehicleUpdate(colunm, var, id):
     mydb.commit()
 
 
-def vehicleAdd(data, type, manufacturer):
+def vehicleAdd(id, data, type, manufacturer):
     mydb = pymysql.connect(host="localhost", user="root",
                            password="8928000cjc", db="sql", port=3306)
     mycursor = mydb.cursor()
-    add = 'insert into vehicle(vehicle_date, vehicle_type, vehicle_manufacturer) values (%s, %s, %s)'
-    mycursor.execute(add, (data, type, manufacturer))
+    add = 'insert into vehicle(vehicle_license_plate, vehicle_date, vehicle_type, vehicle_manufacturer) ' \
+          'values (%s, %s, %s, %s)'
+    mycursor.execute(add, (id, data, type, manufacturer))
     mydb.commit()
 
 
@@ -47,4 +58,6 @@ def vehicleDelete(id):
     delete = 'delete from vehicle where `sql`.vehicle.vehicle_license_plate = %s'
     mycursor.execute(delete, id)
     mydb.commit()
+
+
 

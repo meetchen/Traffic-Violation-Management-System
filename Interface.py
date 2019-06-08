@@ -1,6 +1,6 @@
 import tkinter
 import tkinter.messagebox
-import driver, tkwindows, usertable, police
+import driver, tkwindows, usertable, police, vehicle, punish, notice, NOTICEDEMO
 # Window Configuration
 windows = tkinter.Tk()
 windows.attributes("-alpha", 0.8)
@@ -72,6 +72,8 @@ def Police_Windows1():
     arp5.place(x=200, y=320)
     arp6 = tkinter.Label(windows1, text='Punish_information:', font=('Arial', 13))
     arp6.place(x=200, y=380)
+    arp7 = tkinter.Label(windows1, text='Notice of traffic violation:', font=('Arial', 13))
+    arp7.place(x=200, y=440)
     # Button
     # Driver
     btt = tkinter.Button(windows1, text='Select', font=('Arial', 12), command=driver.driver)
@@ -92,32 +94,35 @@ def Police_Windows1():
     btt7 = tkinter.Button(windows1, text='Insert', font=('Arial', 12), command=tkwindows.police_insert_windows)
     btt7.place(x=700, y=200)
     # Vehicle
-    btt4 = tkinter.Button(windows1, text='Select', font=('Arial', 12), command=driver.driver)
+    btt4 = tkinter.Button(windows1, text='Select', font=('Arial', 12), command=vehicle.vehicleSelect)
     btt4.place(x=400, y=260)
-    btt5 = tkinter.Button(windows1, text='Delete', font=('Arial', 12), command=tkwindows.delete_windows)
+    btt5 = tkinter.Button(windows1, text='Delete', font=('Arial', 12), command=tkwindows.vehicle_delete_windows)
     btt5.place(x=500, y=260)
-    btt6 = tkinter.Button(windows1, text='Update', font=('Arial', 12), command=tkwindows.update_windows)
+    btt6 = tkinter.Button(windows1, text='Update', font=('Arial', 12), command=tkwindows.vehicle_update_windows)
     btt6.place(x=600, y=260)
-    btt7 = tkinter.Button(windows1, text='Insert', font=('Arial', 12), command=tkwindows.insert_windows)
+    btt7 = tkinter.Button(windows1, text='Insert', font=('Arial', 12), command=tkwindows.vehicle_insert_windows)
     btt7.place(x=700, y=260)
     # Punish
-    btt8 = tkinter.Button(windows1, text='Select', font=('Arial', 12), command=driver.driver)
+    btt8 = tkinter.Button(windows1, text='Select', font=('Arial', 12), command=punish.punishSelect)
     btt8.place(x=400, y=320)
-    btt9 = tkinter.Button(windows1, text='Delete', font=('Arial', 12), command=tkwindows.delete_windows)
+    btt9 = tkinter.Button(windows1, text='Delete', font=('Arial', 12), command=tkwindows.punish_delete_windows)
     btt9.place(x=500, y=320)
-    btt10 = tkinter.Button(windows1, text='Update', font=('Arial', 12), command=tkwindows.update_windows)
+    btt10 = tkinter.Button(windows1, text='Update', font=('Arial', 12), command=tkwindows.punish_update_windows)
     btt10.place(x=600, y=320)
-    btt11 = tkinter.Button(windows1, text='Insert', font=('Arial', 12), command=tkwindows.insert_windows)
+    btt11 = tkinter.Button(windows1, text='Insert', font=('Arial', 12), command=tkwindows.punish_insert_windows)
     btt11.place(x=700, y=320)
     # Notice
-    btt12 = tkinter.Button(windows1, text='Select', font=('Arial', 12), command=driver.driver)
+    btt12 = tkinter.Button(windows1, text='Select', font=('Arial', 12), command=notice.noticeSelect)
     btt12.place(x=400, y=380)
-    btt13 = tkinter.Button(windows1, text='Delete', font=('Arial', 12), command=tkwindows.delete_windows)
+    btt13 = tkinter.Button(windows1, text='Delete', font=('Arial', 12), command=tkwindows.notice_delete_windows)
     btt13.place(x=500, y=380)
-    btt14 = tkinter.Button(windows1, text='Update', font=('Arial', 12), command=tkwindows.update_windows)
+    btt14 = tkinter.Button(windows1, text='Update', font=('Arial', 12), command=tkwindows.notice_update_windows)
     btt14.place(x=600, y=380)
-    btt15 = tkinter.Button(windows1, text='Insert', font=('Arial', 12), command=tkwindows.insert_windows)
+    btt15 = tkinter.Button(windows1, text='Insert', font=('Arial', 12), command=tkwindows.notice_insert_windows)
     btt15.place(x=700, y=380)
+    # Ticket
+    ticker = tkinter.Button(windows1, text='Establish', font=('Arial', 12), command=NOTICEDEMO.tuple_funciton)
+    ticker.place(x=400, y=440)
     windows1.mainloop()
 
 

@@ -1,5 +1,6 @@
 import pymysql
 import driver
+import NOTICEDEMO
 # driver.driver()
 # driver.driverAdd('袁博文', 184845451, '西安科技大学临潼校区', '7926')
 
@@ -28,3 +29,4 @@ def driverdelete():
 
 
 
+NOTICEDEMO.tuple_funciton()

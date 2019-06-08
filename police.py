@@ -13,7 +13,18 @@ def policeSelect():
     mycursor.execute(select)
     select = mycursor.fetchall()
     mydb.commit()
-    tkwindows.police_select_windows(select)
+    tkwindows.select_windows(select)
+    return select
+
+
+def police_select_id(id):
+    mydb = pymysql.connect(host="localhost", user="root",
+                           password="8928000cjc", db="sql", port=3306)
+    mycursor = mydb.cursor()
+    mycursor.execute('select * from police where `sql`.police.police_id = %s', id)
+    var = mycursor.fetchone()
+    return var
+
 
 def policeAdd(policename):
     # 添加警察信息

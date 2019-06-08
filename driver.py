@@ -16,6 +16,16 @@ def driver():
     return var
 
 
+def driver_select_id(id):
+    mydb = pymysql.connect(host="localhost", user="root",
+                           password="8928000cjc", db="sql", port=3306)
+    mycursor = mydb.cursor()
+    mycursor.execute("select * from driver where `sql`.driver.driver_id = %s", id)
+    var = mycursor.fetchone()
+    return var
+
+
+
 # 添加驾驶人信息
 def driver_insert(name, phone, address, post_code):
     mydb = pymysql.connect(host="localhost", user="root", password="8928000cjc", db="sql", port=3306)
