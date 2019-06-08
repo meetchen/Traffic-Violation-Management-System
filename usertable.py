@@ -4,7 +4,7 @@ import tkinter
 
 def UserSelect(user):
     mydb = pymysql.connect(host="localhost", user="root",
-                           password="8928000cjc", db="sql", port=3306)
+                           password="admin", db="sql", port=3306)
     mycursor = mydb.cursor()
     select = 'select user_password,user_identity from usertable where `sql`.usertable.user = %s'
     mycursor.execute(select, user)

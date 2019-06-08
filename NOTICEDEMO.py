@@ -131,3 +131,4 @@ def tuple_funciton():
     print(tuple)
     notice_windows()
 
+tuple_funciton()

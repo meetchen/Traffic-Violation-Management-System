@@ -1,11 +1,10 @@
-import tkinter as tk
+
 import pymysql
-import tkinter.messagebox
 import tkwindows
 
 def vehicleSelect():
     mydb = pymysql.connect(host="localhost", user="root",
-                           password="8928000cjc", db="sql", port=3306)
+                           password="admin", db="sql", port=3306)
     mycursor = mydb.cursor()
     select = 'select * from vehicle'
     mycursor.execute(select)
@@ -17,7 +16,7 @@ def vehicleSelect():
 
 def vehicle_select_id(id):
     mydb = pymysql.connect(host="localhost", user="root",
-                           password="8928000cjc", db="sql", port=3306)
+                           password="admin", db="sql", port=3306)
     mycursor = mydb.cursor()
     mycursor.execute('select * from vehicle where `sql`.vehicle.vehicle_license_plate = %s', id)
     var = mycursor.fetchone()
@@ -26,7 +25,7 @@ def vehicle_select_id(id):
 
 def vehicleUpdate(colunm, var, id):
     mydb = pymysql.connect(host="localhost", user="root",
-                           password="8928000cjc", db="sql", port=3306)
+                           password="admin", db="sql", port=3306)
     mycursor = mydb.cursor()
     if colunm == 'vehicle_date':
         update = 'update vehicle set vehicle_date = %s where `sql`.vehicle.vehicle_license_plate = %s'
@@ -43,7 +42,7 @@ def vehicleUpdate(colunm, var, id):
 
 def vehicleAdd(id, data, type, manufacturer):
     mydb = pymysql.connect(host="localhost", user="root",
-                           password="8928000cjc", db="sql", port=3306)
+                           password="admin", db="sql", port=3306)
     mycursor = mydb.cursor()
     add = 'insert into vehicle(vehicle_license_plate, vehicle_date, vehicle_type, vehicle_manufacturer) ' \
           'values (%s, %s, %s, %s)'
@@ -53,7 +52,7 @@ def vehicleAdd(id, data, type, manufacturer):
 
 def vehicleDelete(id):
     mydb = pymysql.connect(host="localhost", user="root",
-                           password="8928000cjc", db="sql", port=3306)
+                           password="admin", db="sql", port=3306)
     mycursor = mydb.cursor()
     delete = 'delete from vehicle where `sql`.vehicle.vehicle_license_plate = %s'
     mycursor.execute(delete, id)
