@@ -12,4 +12,22 @@
 
 **Prepare the database files**
 
+> sql.sql
 
+## 现在你就可以使用它了
+
+**Now you can use it**
+
+> python main.py
+
+---
+
+## 有问题可以在我的博客留言
+
+**Leave a comment on my blog if you have any questions**
+
+> Url :  https://www.cduanran.com/guestbook/
+>
+> Email ：duanran@cduanran.com
+
+## Thanks
